@@ -1,17 +1,16 @@
 const iconTheme = document.querySelector(".iconTheme");
 
-if (JSON.parse(localStorage.getItem("darkTheme"))) {
-    addDarkTheme();
-}
+if (JSON.parse(localStorage.getItem("darkTheme"))) addDarkTheme();
 
 iconTheme.addEventListener("click", () => {
     if (document.body.classList.contains("darktheme")) {
-        localStorage.setItem("darkTheme", false);
         removeDarkTheme();
-    } else {
-        localStorage.setItem("darkTheme", true);
-        addDarkTheme();
+        localStorage.setItem("darkTheme", false);
+        return;
     }
+
+    addDarkTheme();
+    localStorage.setItem("darkTheme", true);
 });
 
 function removeDarkTheme() {
